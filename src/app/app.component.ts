@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, NgForm, Validators } from '@angular/forms';
 import { Post, PostsService } from './posts.service';
 
 @Component({
@@ -9,13 +9,13 @@ import { Post, PostsService } from './posts.service';
 })
 export class AppComponent implements OnInit {
   defaultUserId = 0;
-  form: FormGroup;
+  form: UntypedFormGroup;
   post: Post = { title: '', userId: this.defaultUserId };
   msg = '';
 
   constructor(
     private postsService: PostsService,
-    private formBuilder: FormBuilder
+    private formBuilder: UntypedFormBuilder
   ) {
     this.form = this.formBuilder.group({
       title: ['', [Validators.required, Validators.minLength(4)]],
